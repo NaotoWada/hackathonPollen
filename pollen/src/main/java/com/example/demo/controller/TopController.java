@@ -15,10 +15,10 @@ public class TopController {
 	private WeatherHandleService service;
 
 	@RequestMapping("/")
-	public String index(Model model, @RequestParam String city) {
+	public String index(Model model, @RequestParam(name = "cityName", required = false) String cityName) {
 
-		model.addAttribute("cityName", service.getJapaneseCityName(city));
-		model.addAttribute("pollen", service.getResult(city));
+		model.addAttribute("cityName", service.getJapaneseCityName(cityName));
+		model.addAttribute("pollen", service.getResult(cityName));
 		model.addAttribute("viewDate", service.currentTime());
 
 		return "index";

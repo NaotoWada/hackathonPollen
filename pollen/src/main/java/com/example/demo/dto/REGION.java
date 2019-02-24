@@ -67,7 +67,6 @@ public enum REGION {
 	 * @return
 	 */
 	public static String toJpName(String name) {
-		Objects.requireNonNull(name);
 		
 		for (REGION region : REGION.values()) {
 			if(region.enName.equals(name)) {

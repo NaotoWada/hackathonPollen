@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8" />
-<title>demo</title>
+<title>pollen system</title>
 </head>
 <body>
 	<h1>お天気API</h1>
 	<h2>花粉情報からその日の生活のしやすさを提供します。</h2>
 	<form method="POST" action="/">
-		探したい場所 <select name="cityName">
+		探したい場所 <select name="cityName" value="">
 			<optgroup label="北海道">
 				<option value="Hokkaidō">北海道</option>
 			</optgroup>
@@ -77,6 +77,5 @@
 
 	<p>[[${cityName}]]の[[${viewDate}]]時点の飛散量</p>
 	<p>[[${pollen}]]</p>
-	
 </body>
 </html>

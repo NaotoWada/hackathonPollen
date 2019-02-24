@@ -31,13 +31,15 @@ public class WeatherHandleService {
 	 * Create pollen affection result from RequestAPI data which is involved input
 	 * city name.
 	 * 
-	 * @param cityName if {@code null} then {@code throw NullpointerException}.<br>
+	 * @param cityName if {@code null} then return EMPTY.<br>
 	 *                 only adopt Japanese region.
 	 * @return view word as result
 	 */
 	public String getResult(String cityName) {
 
-		Objects.requireNonNull(cityName);
+		if (cityName == null) {
+			return "";
+		}
 
 		ResponceDTO dto = service.requestOpenWeatherAPI(cityName);
 
@@ -82,11 +84,14 @@ public class WeatherHandleService {
 	 * <p>
 	 * Get city by English name region.
 	 * 
-	 * @param cityName if {@code null} then {@code throw NullpointerException}.<br>
+	 * @param cityName if {@code null} then return EMPTY.<br>
 	 *                 only adopt Japanese region.
 	 * @return Japanese city name
 	 */
 	public String getJapaneseCityName(String cityName) {
+		if (cityName == null) {
+			return "";
+		}
 		return REGION.toJpName(cityName);
 	}
 }

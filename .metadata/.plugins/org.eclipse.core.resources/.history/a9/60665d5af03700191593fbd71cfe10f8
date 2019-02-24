@@ -1,0 +1,18 @@
+package com.example.demo.enums;
+
+import lombok.Getter;
+
+public enum RESULT {
+
+	HIGH("めっちゃとぶ"), //
+	MID("ふつうにとぶ"), //
+	LOW("ぜんぜんとばない");//
+
+	@Getter
+	private String dispWord;
+
+	RESULT(String dispWord) {
+		this.dispWord = dispWord;
+	}
+
+}

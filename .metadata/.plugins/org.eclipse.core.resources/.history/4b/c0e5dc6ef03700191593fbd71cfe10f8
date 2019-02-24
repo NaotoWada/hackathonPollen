@@ -1,0 +1,13 @@
+package com.example.demo.service;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class WeatherJudge {
+
+	private static final String IS_MATCH = "Clear";
+
+	public static boolean isMatch(String w) {
+		return w.equals(IS_MATCH);
+	}
+}

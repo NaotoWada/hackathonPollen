@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>demo</title>
+</head>
+<body>
+<h1>お天気API</h1>
+<h2>花粉情報からその日の生活のしやすさを提供します。</h2>
+<form method="POST" action="/">
+探したい場所<input type="text" name="cityName" value="" size="30"></input><input type="submit" value="表示" size="30"></input>
+</form>
+
+<p>場所：[[${cityName}]]</p>
+<p>花粉の飛び方：[[${pollen}]]</p>
+</body>
+</html>

@@ -6,21 +6,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.demo.service.WeatherHandleService;
+import com.example.demo.service.ViewService;
 
 @Controller
 public class TopController {
 
 	@Autowired
-	private WeatherHandleService service;
+	private ViewService service;
 
-	@RequestMapping("/")
-	public String index(Model model, @RequestParam(name = "cityName", required = false) String cityName) {
-
-		model.addAttribute("cityName", service.getJapaneseCityName(cityName));
-		model.addAttribute("pollen", service.getResult(cityName));
-		model.addAttribute("viewDate", service.currentTime());
-
-		return "index";
+	@RequestMapping("/top/")
+	public String top(Model model, @RequestParam(name = "view", required = false) String view) {
+		return service.getSceneName(view);
 	}
 }

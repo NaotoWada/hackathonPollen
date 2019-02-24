@@ -5,13 +5,11 @@ import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.REGION;
-import com.example.demo.dto.RESULT;
 import com.example.demo.dto.ResponceDTO;
 
 /**

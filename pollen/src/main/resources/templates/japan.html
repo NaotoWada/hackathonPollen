@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+#japan-map {
+    width: 50%;
+    border-collapse: separate;
+    border-spacing: 1px;
+    border-style:solid;
+    border-size:1px;
+}
+
+.pref {
+    background: #224163;
+    min-height: 10px;
+    font-size: 0.7em;
+    text-align: center;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.pref a {
+    display: block;
+    min-height: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+#hokkaido {
+    margin: 20px 0;
+}
+</style>
+<meta charset="utf-8" />
+<title>pollen system</title>
+</head>
+<body>
+<table id="japan-map">
+    <tr>
+        <td colspan="22" rowspan="4">&nbsp;</td>
+        <td colspan="3" class="pref"><a href="#" id="hokkaido">北海道</a></td>
+    </tr>
+    <tr>
+        <td colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="3" class="pref"><a href="#" id="aomori">青森県</a></td>
+    </tr>
+    <tr>
+        <td class="pref"><a href="#" id="akita">秋田県</a></td>
+        <td colspan="2" class="pref"><a href="#" id="iwate">岩手県</a></td>
+    </tr>
+    <tr>
+        <td colspan="15" rowspan="2">&nbsp;</td>
+        <td colspan="2" rowspan="2" class="pref"><a href="#" id="ishikawa">石川県</a></td>
+        <td colspan="5">&nbsp;</td>
+        <td class="pref"><a href="#" id="yamagata">山形県</a></td>
+        <td colspan="2" class="pref"><a href="#" id="miyagi">宮城県</a></td>
+    </tr>
+    <tr>
+        <td colspan="3" class="pref"><a href="#" id="toyama">富山県</a></td>
+        <td colspan="3" class="pref"><a href="#" id="niigata">新潟県</a></td>
+        <td colspan="2" class="pref"><a href="#" id="fukushima">福島県</a></td>
+    </tr>
+    <tr>
+        <td colspan="13">&nbsp;</td>
+        <td colspan="4" class="pref"><a href="#" id="fukui">福井県</a></td>
+        <td rowspan="2" class="pref"><a href="#" id="gifu">岐阜県</a></td>
+        <td colspan="2" rowspan="2" class="pref"><a href="#" id="nagano">長野県</a></td>
+        <td colspan="2" class="pref"><a href="#" id="gunma">群馬県</a></td>
+        <td class="pref"><a href="#" id="tochigi">栃木県</a></td>
+        <td colspan="2" rowspan="2" class="pref"><a href="#" id="ibaraki">茨城県</a></td>
+    </tr>
+    <tr>
+        <td colspan="5">&nbsp;</td>
+        <td class="pref"><a href="#" id="yamaguchi">山口県</a></td>
+        <td colspan="2" class="pref"><a href="#" id="shimane">島根県</a></td>
+        <td colspan="2" class="pref"><a href="#" id="tottori">鳥取県</a></td>
+        <td rowspan="2" class="pref"><a href="#" id="hyogo">兵庫県</a></td>
+        <td colspan="2" class="pref"><a href="#" id="kyoto">京都府</a></td>
+        <td colspan="4" class="pref"><a href="#" id="shiga">滋賀県</a></td>
+        <td colspan="2" class="pref"><a href="#" id="yamanashi">山梨県</a></td>
+        <td class="pref"><a href="#" id="saitama">埼玉県</a></td>
+    </tr>
+    <tr>
+        <td rowspan="2" class="pref"><a href="#" id="nagasaki">長崎県</a></td>
+        <td rowspan="2" class="pref"><a href="#" id="saga">佐賀県</a></td>
+        <td colspan="3" class="pref"><a href="#" id="fukuoka">福岡県</a></td>
+        <td>&nbsp;</td>
+        <td colspan="2" class="pref"><a href="#" id="hiroshima">広島県</a></td>
+        <td colspan="2" class="pref"><a href="#" id="okayama">岡山県</a></td>
+        <td colspan="2" class="pref"><a href="#" id="osaka">大阪府</a></td>
+        <td colspan="2" class="pref"><a href="#" id="nara">奈良県</a></td>
+        <td colspan="2" rowspan="2" class="pref"><a href="#" id="mie">三重県</a></td>
+        <td class="pref"><a href="#" id="aichi">愛知県</a></td>
+        <td colspan="2" rowspan="2" class="pref"><a href="#" id="shizuoka">静岡県</a></td>
+        <td colspan="2" rowspan="2" class="pref"><a href="#" id="kanagawa">神奈川県</a></td>
+        <td class="pref"><a href="#" id="tokyo">東京都</a></td>
+        <td colspan="2" rowspan="2" class="pref"><a href="#" id="chiba">千葉県</a></td>
+    </tr>
+    <tr>
+        <td rowspan="3" class="pref"><a href="#" id="kumamoto">熊本県</a></td>
+        <td colspan="2" class="pref"><a href="#" id="oita">大分県</a></td>
+        <td colspan="6">&nbsp;</td>
+        <td colspan="4" class="pref"><a href="#" id="wakayama">和歌山県</a></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2" rowspan="3">&nbsp;</td>
+        <td colspan="2" rowspan="2" class="pref"><a href="#" id="miyazaki">宮崎県</a></td>
+        <td rowspan="2">&nbsp;</td>
+        <td colspan="2" class="pref"><a href="#" id="ehime">愛媛県</a></td>
+        <td colspan="2" class="pref"><a href="#" id="kagawa">香川県</a></td>
+        <td colspan="15" rowspan="4">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2" class="pref"><a href="#" id="kochi">高知県</a></td>
+        <td colspan="2" class="pref"><a href="#" id="tokushima">徳島県</a></td>
+    </tr>
+    <tr>
+        <td colspan="3" class="pref"><a href="#" id="kagoshima">鹿児島県</a></td>
+        <td colspan="5">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2" class="pref"><a href="#" id="okinawa">沖縄県</a></td>
+        <td colspan="8">&nbsp;</td>
+    </tr>
+</table>
+
+</body>
+</html>

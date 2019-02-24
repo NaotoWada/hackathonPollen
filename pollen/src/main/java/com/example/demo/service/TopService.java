@@ -5,9 +5,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.demo.dto.OpenWeatherMapDTO;
 import com.example.demo.dto.ResponceDTO;
 
+/**
+ * <p>
+ * OpenWeatherAPI accessor class.
+ * 
+ * @author Naoto Wada
+ */
 @Service
 public class TopService {
 
@@ -15,11 +20,20 @@ public class TopService {
 	@Qualifier("zipCodeSearchRestTemplate")
 	RestTemplate restTemplate;
 
-	/** 郵便番号検索API リクエストURL */
-	private static final String URL = "http://zipcloud.ibsnet.co.jp/api/search?zipcode={zipcode}";
+	/** OpenWeatherAPI RequestURL */
+	private static final String URL_BEFORE = "http://api.openweathermap.org/data/2.5/forecast?q=";
+	private static final String URL_AFTER = ",jp&APPID=12d670fe1c3082cf7a71a0492679eb2c";
 
-	public ResponceDTO service() {
-		OpenWeatherMapDTO dto = restTemplate.getForObject(URL, OpenWeatherMapDTO.class);
-		return ResponceDTO.builder().weather("Clear").humidity(40).speed(7.21).build();
+	/**
+	 * <p>
+	 * Request json data from OpenWeatherAPI.
+	 * 
+	 * @param cityName EnglishName of Japanese region
+	 * @return json object
+	 */
+	public ResponceDTO requestOpenWeatherAPI(String cityName) {
+		String url = URL_BEFORE + cityName + URL_AFTER;
+		ResponceDTO dto = restTemplate.getForObject(url, ResponceDTO.class);
+		return dto;
 	}
 }

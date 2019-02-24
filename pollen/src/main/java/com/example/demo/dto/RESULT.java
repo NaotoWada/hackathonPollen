@@ -4,9 +4,9 @@ import lombok.Getter;
 
 public enum RESULT {
 
-	HIGH("めっちゃとぶ"), //
-	MID("ふつうにとぶ"), //
-	LOW("ぜんぜんとばない");//
+	HIGH("非常に良く飛ぶ"), //
+	MID("良く飛ぶ"), //
+	LOW("あまり飛ばず快適");//
 
 	@Getter
 	private String dispWord;

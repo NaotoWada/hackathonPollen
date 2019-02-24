@@ -1,2 +1,2 @@
 # hackathonPollen
-hackathon to create  at Gotanda 
+hackathon to create pollen confirmation system at Gotanda 

@@ -33,7 +33,7 @@ public class WeatherHandleService {
 	 *                 only adopt Japanese region.
 	 * @return view word as result
 	 */
-	public String getResult(String cityName) {
+	public String getResultByRequest(String cityName) {
 
 		if (cityName == null) {
 			return "";
@@ -50,6 +50,29 @@ public class WeatherHandleService {
 		return PollenResultCreator.create(resultList);
 	}
 
+	/**
+	 * <p>
+	 * Create pollen affection result by city name.
+	 * 
+	 * @param cityName if {@code null} then return EMPTY.<br>
+	 *                 only adopt Japanese region.
+	 * @return view word as result
+	 */
+	public String getPollen(String cityName) {
+
+		if (cityName == null) {
+			return "";
+		}
+
+		List<Boolean> resultList = new ArrayList<>();
+
+		resultList.add(JudgeWeather.isMatch(REGION.getWeather(cityName)));
+		resultList.add(JudgeHumid.isMatch(REGION.getHumid(cityName)));
+		resultList.add(JudgeWindSpeed.isMatch(REGION.getWindSpeed(cityName)));
+
+		return PollenResultCreator.create(resultList);
+	}
+	
 	/**
 	 * <p>
 	 * Get currentTime as specific format. truncate milliseconds.

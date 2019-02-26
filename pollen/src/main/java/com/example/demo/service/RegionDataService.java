@@ -4,10 +4,21 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.demo.dto.REGION;
 
 @Service
 public class RegionDataService {
+
+	@Autowired
+	private TopService service;
+
+	private static LocalDateTime LAST_REQUEST_TIME = null;
+
+	/** API request cool time to avoid over request. */
+	private static final int COOL_TIME_REQUEST_API_MINUTE = 1;
 
 	/**
 	 * <p>
@@ -37,15 +48,81 @@ public class RegionDataService {
 		return sb.toString();
 	}
 
-	public Object getWeather(String cityName) {
-		return null;
+	public String getWeather(String cityName) {
+		if (cityName == null) {
+			return "";
+		}
+		return REGION.getWeather(cityName);
 	}
 
-	public Object getHumid(String cityName) {
-		return null;
+	public double getTempMax(String cityName) {
+		if (cityName == null) {
+			return 0.0;
+		}
+		return REGION.getTempMax(cityName);
 	}
 
-	public Object getWindSpeed(String cityName) {
-		return null;
+	public double getTempMin(String cityName) {
+		if (cityName == null) {
+			return 0.0;
+		}
+		return REGION.getTempMin(cityName);
 	}
+
+	public int getHumid(String cityName) {
+		if (cityName == null) {
+			return 0;
+		}
+		return REGION.getHumid(cityName);
+	}
+
+	public double getWindSpeed(String cityName) {
+		if (cityName == null) {
+			return 0.0;
+		}
+		return REGION.getWindSpeed(cityName);
+	}
+
+	public String getJapaneseCityName(String cityName) {
+		if (cityName == null) {
+			return "";
+		}
+		return REGION.getCityName(cityName);
+	}
+
+	/**
+	 * <p>
+	 * Request API then store result map.
+	 * <p>
+	 * If request time under {@value COOL_TIME_REQUEST_API_MINUTE} minute, do
+	 * nothing.
+	 * 
+	 * @param requestTime
+	 * @return result word
+	 */
+	public String requireApi(LocalDateTime requestTime) {
+
+		System.out.println("RegionDataService.requireApi 前回時刻:" + LAST_REQUEST_TIME);
+		System.out.println("RegionDataService.requireApi 要求時刻:" + requestTime);
+		
+		if (LAST_REQUEST_TIME != null) {
+
+			long durationTime = ChronoUnit.MINUTES.between(LAST_REQUEST_TIME, requestTime);
+			if (durationTime < COOL_TIME_REQUEST_API_MINUTE) {
+
+				System.out.println("RegionDataService.requireApi 要求時刻が早いので実行せずに終了:" + durationTime);
+				
+				return "もうしばらく時間をおいてから、問い合わせしてください";
+			}
+		}
+
+		service.requestOpenWeatherAPIthenStoreMap();
+		setCurrentTime();
+		return "";
+	}
+
+	public void setCurrentTime() {
+		LAST_REQUEST_TIME = LocalDateTime.now();
+	}
+	
 }

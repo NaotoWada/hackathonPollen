@@ -1,16 +1,11 @@
 package com.example.demo.dto;
 
 import java.util.List;
-import java.util.Map;
 
 import lombok.Data;
 
 @Data
 public class ResponceDTO {
-	String cod;
-	double message;
-	int cnt;
-	Map<String, Object> city;
 	List<OpenWeatherMapDTO> list;
 
 	public String getWeather() {

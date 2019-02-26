@@ -18,7 +18,7 @@ public class IndexController {
 	public String index(Model model, @RequestParam(name = "cityName", required = false) String cityName) {
 
 		model.addAttribute("cityName", service.getJapaneseCityName(cityName));
-		model.addAttribute("pollen", service.getResult(cityName));
+		model.addAttribute("pollen", service.getResultByRequest(cityName));
 		model.addAttribute("viewDate", service.currentTime());
 
 		return "index";

@@ -2,3 +2,30 @@
 1550984128727	Rename type 'HumidJudge'
 1550984140380	Rename type 'WeatherJudge'
 1550984152535	Rename type 'WindSpeedJudge'
+1550999096001	Rename method 'allocate'
+1551000819713	Rename type 'WindDto'
+1551000823985	Rename type 'WeatherDto'
+1551000836003	Rename type 'MainMapDto'
+1551003074935	Rename method 'request'
+1551003082446	Rename method 'requestAPI'
+1551003939173	Rename method 'getCity'
+1551003943063	Rename method 'getJapaneseCity'
+1551003956338	Rename local variable 'cityName'
+1551007735163	Delete element
+1551008490751	Delete elements
+1551008552961	Rename resource 'japanMap.html'
+1551008800151	Delete element
+1551008801765	Delete element
+1551016947616	Delete element
+1551017565516	Rename method 'change'
+1551109418455	Copy file
+1551109462856	Move file
+1551110352575	Rename resource 'img'
+1551145260588	Delete element
+1551193691449	Rename local variable 'storeDtoList'
+1551196270562	Rename method 'getWeath'
+1551196510909	Rename method 'getCityName'
+1551197030516	Rename method 'getWeathr'
+1551197064223	Rename method 'getResult'
+1551197114313	Rename field 'service'
+1551199022379	Rename method 'steTime'

@@ -28,15 +28,18 @@ public class TopService {
 	@Autowired
 	@Qualifier("zipCodeSearchRestTemplate")
 	RestTemplate restTemplate;
-
+	
+	@Autowired
+	APIContext apiContext;
+	
 	/** OpenWeatherAPI RequestURL */
 	private static final String URL_BEFORE = "https://api.openweathermap.org/data/2.5/forecast?q=";
-	private static final String URL_AFTER = ",jp&APPID=12d670fe1c3082cf7a71a0492679eb2c";
+	private static final String URL_AFTER = ",jp&APPID=";
 
 	/** OpenWeatherAPI RequestURL */
 	private static final String URL_MULTI_BEFORE = "https://api.openweathermap.org/data/2.5/group?id=";
-	private static final String URL_MULTI_AFTER = "&units=metric&APPID=12d670fe1c3082cf7a71a0492679eb2c";
-
+	private static final String URL_MULTI_AFTER = "&units=metric&APPID=";
+	
 	/**
 	 * <p>
 	 * Request json data from OpenWeatherAPI.
@@ -45,7 +48,10 @@ public class TopService {
 	 * @return json object
 	 */
 	public ResponceDTO requestOpenWeatherAPI(String cityName) {
-		String url = URL_BEFORE + cityName + URL_AFTER;
+		String apiKey = apiContext.getKey();
+		System.out.println("APIキー取得:"+ apiKey);
+		
+		String url = URL_BEFORE + cityName + URL_AFTER + apiKey;
 		ResponceDTO dto = restTemplate.getForObject(url, ResponceDTO.class);
 		return dto;
 	}
@@ -73,10 +79,12 @@ public class TopService {
 	}
 
 	private List<ResponceDTO> requestDtoBy(List<String> idList) {
+		String apiKey = apiContext.getKey();
+		System.out.println("APIキー取得:"+ apiKey);
 
 		List<ResponceDTO> retList = new ArrayList<>();
 		for (REQUEST_DIVIDE requestTime : REQUEST_DIVIDE.values()) {
-			String url = URL_MULTI_BEFORE + extratId(idList, requestTime) + URL_MULTI_AFTER;
+			String url = URL_MULTI_BEFORE + extratId(idList, requestTime) + URL_MULTI_AFTER + apiKey;
 			
 			System.out.println(url);
 			
